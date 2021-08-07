@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import "./App.sass"
+import { useDispatch, useSelector } from 'react-redux'
+import { HashRouter } from 'react-router-dom'
+import Burger from './Components/Burger/Burger'
+import Routers from './Route/Routers'
+import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 
-function App() {
+
+const App = () => {
+  const dispatch = useDispatch();
+  const chapter =  useSelector(state => state.chapter.chapter);
+  const [burger, setburger] = useState(false);
+
+  useEffect(()=> {
+    fetch(`https://datainlife.ru/junior_task/get_products.php`)
+    .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        dispatch({type: "GET__CHAPTER", payload: [...response]});
+      })
+  }, [dispatch])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <HashRouter>
+        <Header setburger={setburger}/>
+        {/* Показ боковой панели */}
+        { burger ? <Burger setburger={setburger} chapter={chapter}/> : null}
+        <Routers chapter={chapter}/>
+        <Footer/>
+    </HashRouter>
+    
+  )
 }
 
-export default App;
+export default App
