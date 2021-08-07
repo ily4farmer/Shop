@@ -9,7 +9,7 @@ const Сhapter = ({item}) => {
                 <div className="chapter-block">
                     <h1 className="chapter__title">{item.rname}</h1>
                     <ul className="chapter__list">
-                        {item.goods.map(item => <ChapterItem item={item}/>)}
+                        {item.goods.map(item => <ChapterItem key={item.gid} item={item}/>)}
                     </ul>
                 </div>
             </div>

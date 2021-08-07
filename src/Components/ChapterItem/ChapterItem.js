@@ -5,17 +5,15 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const ChapterItem = ({item}) => {
     const dispatch = useDispatch()
-    const {product, sum} = useSelector(state => state.product)
+    const product = useSelector(state => state.product.product)
     const [value, setValue] = useState('')
    
     function inputHandler(e, id) {
+        const amount = e.target.value;
         // Удаление одинаковых объектов из product
-        const newArr = product.filter((item) => {
-            return item.id !== id
-        })
-        const amount = e.target.value
+        const newArr = product.filter(item => item.id !== id)
         if (amount <= 0) {
-            setValue(0)
+            setValue('')
             // Т.к. в к-во продукта = 0, удаляем данный продук из store
             const newArr = product.filter(item => item.id !== id)
             return dispatch({type: "PRODUCT_ADD", payload:[...newArr]})
@@ -37,8 +35,8 @@ const ChapterItem = ({item}) => {
                 <p className="chapter__id">{item.gid}</p>
                 <p className="form__name">{item.gname}</p>
                 <p className="form__price">{item.gprice}</p>
-                <input className="form__input" value={value} onChange={(e) => inputHandler(e, item.gid)} type="tel" />
-                <p className="form__sum">{value * item.gprice}</p>
+                <input className="form__input" value={value} onChange={(e) => inputHandler(e, item.gid)} type="number" />
+                <p className="form__sum">{value === null ? 0 : value * item.gprice}</p>
             </form>
         </li>
     )

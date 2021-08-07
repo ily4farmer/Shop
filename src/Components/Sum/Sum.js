@@ -5,7 +5,6 @@ const Sum = () => {
     const product = useSelector(state => state.product.product);
     const a = [...product]
     let sum = 0
-    console.log(a);
     if (a.length > 0) {
         console.log(a);
         const arr = a.map(item => item.sum)

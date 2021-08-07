@@ -17,7 +17,6 @@ const App = () => {
     fetch(`https://datainlife.ru/junior_task/get_products.php`)
     .then(response => response.json())
       .then(response => {
-        console.log(response);
         dispatch({type: "GET__CHAPTER", payload: [...response]});
       })
   }, [dispatch])

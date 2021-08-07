@@ -6,7 +6,7 @@
 * React / React-Hooks / React-Router-Dom
 * Redux
 * Rest Api
-* Sass
+* Sass / Flexbox
 ---
 ## Функционал
 * Регистрация с валидацией формы
