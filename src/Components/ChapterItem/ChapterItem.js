@@ -43,4 +43,4 @@ const ChapterItem = ({item}) => {
     )
 }
 
-export default React.memo(ChapterItem)
+export default ChapterItem
