@@ -15,7 +15,7 @@ const ChapterItem = ({item}) => {
         if (amount <= 0) {
             setValue('')
             // Т.к. в к-во продукта = 0, удаляем данный продук из store
-            return dispatch({type: "PRODUCT_ADD", payload:[...newArr]})
+            return dispatch({type: "PRODUCT_REMOVE", payload:[...newArr]})
         } else {
             setValue(amount)
             const sum = amount * item.gprice

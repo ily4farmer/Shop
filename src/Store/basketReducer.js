@@ -2,13 +2,16 @@ const defaultState = {
     basket: []
 }
 
-const addBasket = "addBasket"
+const ADD__BASKET = "ADD__BASKET",
+      REMOVE__BASKET = "REMOVE__BASKET";
 
 
 export const basketReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case addBasket:
+        case ADD__BASKET:
             return {...state, basket: action.payload}; 
+        case REMOVE__BASKET:
+            return {...state, basket: action.payload};
         default:
             return state;
     }

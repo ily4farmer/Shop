@@ -8,8 +8,8 @@ const Basket = ({setHide}) => {
     const basket = useSelector(state => state.basket.basket)
 
     function buy() {
-        dispatch({type: "addBasket", payload: []})
-        dispatch({type: "PRODUCT_ADD", payload: []})
+        dispatch({type: "REMOVE__BASKET", payload: []})
+        dispatch({type: "PRODUCT_REMOVE", payload: []})
     }
     return (
         <section className="basket">

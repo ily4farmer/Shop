@@ -25,7 +25,7 @@ const Footer = () => {
             .then(function (response) {
                 console.log(response);
                 const newArr = product.map(item => item)
-                dispatch({type: "addBasket", payload: [...newArr]})
+                dispatch({type: "ADD__BASKET", payload: [...newArr]})
             })
             .catch(function (error) {
                 console.log(error);
