@@ -1,13 +1,17 @@
 import React from 'react'
 import "./Footer.sass"
 import Sum from "../Sum/Sum"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
 const Footer = () => {
+    const dispatch = useDispatch()
     const product = useSelector(state => state.product.product)
 
     async function productData() {
+        if (product.length === 0) {
+            return console.log("пусто");
+        }
         const body = new FormData();
         for (const elem of product) {
             body.append(`product[${elem.id}]`, elem.amount);
@@ -18,16 +22,14 @@ const Footer = () => {
             data: body,
             headers: { "Content-Type": "multipart/form-data" }
         })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-        await axios.get(`https://datainlife.ru/junior_task/add_basket.php`)
-        .then(response => {
-          console.log(response);
-        })
+            .then(function (response) {
+                console.log(response);
+                const newArr = product.map(item => item)
+                dispatch({type: "addBasket", payload: [...newArr]})
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     
     return (

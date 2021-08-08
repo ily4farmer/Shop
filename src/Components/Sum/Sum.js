@@ -2,14 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 
 const Sum = () => {
-    const product = useSelector(state => state.product.product);
-    const a = [...product]
-    let sum = 0
-    if (a.length > 0) {
-        console.log(a);
-        const arr = a.map(item => item.sum)
-        console.log(arr);
-        for (const item of arr) {
+    const product = useSelector(state => state.product.product),
+          newArr = [...product];
+    let sum = 0;
+
+    if (newArr.length > 0) {
+        const sumArr = newArr.map(item => item.sum);
+        for (const item of sumArr) {
             sum += item
         }
     }

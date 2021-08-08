@@ -4,7 +4,6 @@ import "./Burger.sass"
 import close from "../../img/close.svg"
 
 const Burger = ({chapter, setburger}) => {
-    console.log(chapter[0].rid);
 
     return (
         <div className="burger">

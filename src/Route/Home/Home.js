@@ -6,8 +6,8 @@ const Home = () => {
         <section className="home">
             <div className="container">
                 <div className="home-block">
-                    <h1 className="home__title">Главная страница</h1>
-                    <p className="home__subtitle">Данный проект был сделан в учебных целях</p>
+                    <h1 className="home__title">Shop</h1>
+                    <p className="home__subtitle">Интернет-магазин произодственных запчастей</p>
                 </div>
             </div>
         </section>

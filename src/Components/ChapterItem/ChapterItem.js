@@ -15,7 +15,6 @@ const ChapterItem = ({item}) => {
         if (amount <= 0) {
             setValue('')
             // Т.к. в к-во продукта = 0, удаляем данный продук из store
-            const newArr = product.filter(item => item.id !== id)
             return dispatch({type: "PRODUCT_ADD", payload:[...newArr]})
         } else {
             setValue(amount)
@@ -23,11 +22,13 @@ const ChapterItem = ({item}) => {
             const data = {
                 id: item.gid,
                 price: item.gprice,
+                name: item.gname,
                 amount: amount,
                 sum: sum
             }
             dispatch({type: "PRODUCT_ADD", payload:[...newArr, data]})
         }
+        
     }
     return (
         <li className="chapter__item" key={item.gid}>
@@ -42,4 +43,4 @@ const ChapterItem = ({item}) => {
     )
 }
 
-export default ChapterItem
+export default React.memo(ChapterItem)
