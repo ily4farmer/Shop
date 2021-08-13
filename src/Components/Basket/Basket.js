@@ -4,12 +4,13 @@ import close from "../../img/close.svg"
 import { useDispatch, useSelector } from 'react-redux'
 
 const Basket = ({setHide}) => {
-    const dispatch = useDispatch()
-    const basket = useSelector(state => state.basket.basket)
+    const dispatch = useDispatch(), 
+          basket = useSelector(state => state.basket.basket)
 
     function buy() {
         dispatch({type: "REMOVE__BASKET", payload: []})
         dispatch({type: "PRODUCT_REMOVE", payload: []})
+        dispatch({type: "CLEAR__INPUT", payload: true})
     }
     return (
         <section className="basket">

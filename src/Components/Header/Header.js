@@ -1,14 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Header.sass"
 import menu from "../../img/menu.svg"
 import basketImg from "../../img/basket.svg"
 import Basket from '../Basket/Basket'
-import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 const Header = ({setburger}) => {
-    const [show, setShow] = useState(false)
-    const basket = useSelector(state => state.basket.basket)
+    const [show, setShow] = useState(false),
+          basket = useSelector(state => state.basket.basket);
     return (
         <header className="header">
             <div className="container">

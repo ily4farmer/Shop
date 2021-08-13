@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useState, useMemo  } from 'react'
 import "./ChapterItem.sass"
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const ChapterItem = ({item}) => {
-    const dispatch = useDispatch()
-    const product = useSelector(state => state.product.product)
-    const [value, setValue] = useState('')
+    const dispatch = useDispatch(),
+          {product, isClear} = useSelector(state => state.product), 
+          [value, setValue] = useState('');
+
+    // отменяет ошибку связанную с превышением рендеров
+    useMemo(()=> {
+        if (isClear) {
+            setValue('');
+        }
+    }, [isClear])
+    
    
-    function inputHandler(e, id) {
+    const inputHandler = (e, id) => {
+        dispatch({type: "CLEAR__INPUT", payload: false})
         const amount = e.target.value;
         // Удаление одинаковых объектов из product
         const newArr = product.filter(item => item.id !== id)

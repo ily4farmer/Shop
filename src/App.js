@@ -9,9 +9,9 @@ import Footer from './Components/Footer/Footer'
 
 
 const App = () => {
-  const dispatch = useDispatch();
-  const chapter =  useSelector(state => state.chapter.chapter);
-  const [burger, setburger] = useState(false);
+  const dispatch = useDispatch(),
+        chapter =  useSelector(state => state.chapter.chapter),
+        [burger, setburger] = useState(false);
 
   useEffect(()=> {
     fetch(`https://datainlife.ru/junior_task/get_products.php`)

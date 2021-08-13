@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 
 const Footer = () => {
-    const dispatch = useDispatch()
-    const product = useSelector(state => state.product.product)
+    const dispatch = useDispatch(),
+          product = useSelector(state => state.product.product)
 
     async function productData() {
         if (product.length === 0) {
